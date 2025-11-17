@@ -1,0 +1,146 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: linear-gradient(135deg, #00433B 0%, #002D27 100%);
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  color: #f5f5f5;
+}
+
+.page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  align-items: center;
+  padding: 2rem 1rem 3rem;
+}
+
+.header { 
+  text-align: center;
+}
+
+.header h1 {
+  margin-bottom: 0.25rem;
+  color: #C69214;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.header p {
+  color: #d4d4d4;
+}
+
+.main {
+  width: min(900px, 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+.dropzone {
+  width: min(500px, 100%);
+  border: 2px dashed #C69214;
+  border-radius: 1rem;
+  min-height: 250px;
+  display: grid;
+  place-items: center;
+  background: rgba(0, 67, 59, 0.3);
+  cursor: pointer;
+  position: relative;
+  transition: 0.2s;
+}
+
+.dropzone.drop-active {
+  background: rgba(198, 146, 20, 0.2);
+  border-color: #E5A91A;
+}
+
+.dropzone p {
+  text-align: center;
+  color: #d4d4d4;
+  line-height: 1.5;
+}
+
+.browse {
+  color: #E5A91A;
+  text-decoration: underline;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.file-input {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.preview {
+  width: 100%;
+  max-height: 240px;
+  object-fit: contain;
+  border-radius: 1rem;
+}
+
+.submit-btn {
+  background: linear-gradient(135deg, #C69214 0%, #E5A91A 100%);
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 9999px;
+  color: #00433B;
+  font-weight: 700;
+  cursor: pointer;
+  transition: 0.2s;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+.submit-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.submit-btm:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(198, 146, 20, 0.4);
+  background: linear-gradient(135deg, #E5A91A 0%, #C69214 100%);
+}
+
+.result-card {
+  background: rgba(0, 67, 59, 0.5);
+  border: 1px solid rgba(198, 146, 20, 0.3);
+  padding: 1.25rem 1.5rem;
+  border-radius: 1rem;
+  width: min(500px, 100%);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+.result-card h2 {
+  margin-top: 0;
+  color: #C69214;
+}
+
+.pred {
+  font-size: 1.1rem;
+  margin-bottom: 0.75rem;
+}
+
+.pred.dr {
+  color: #FF6B6B;
+  font-weight: 700;
+}
+
+.pred.no-dr {
+  color: #51CF66;
+  font-weight: 700;
+}
+
+.error {
+  color: #FF6B6B;
+  background: rgba(255, 107, 107, 0.1);
+  padding: 0.75rem 1rem;
+  border-radius: 0.5rem;
+  border: 1px solid rgba(255, 107, 107, 0.3);
+}
