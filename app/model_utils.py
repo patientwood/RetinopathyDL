@@ -11,9 +11,11 @@ from fastapi import HTTPException
 MODEL_PATH = Path("MODELS") / "maxvit_tiny_tf_224_binary_best.pt"
 IMAGENET_MEAN = (0.485, 0.456, 0.406)
 IMAGENET_STD = (0.229, 0.224, 0.225)
+THRESHOLD = 0.665
 
 _preprocess = T.Compose([
-    T.Resize((224, 224)),
+    T.Resize(256),
+    T.CenterCrop(224),
     T.ToTensor(),
     T.Normalize(mean=IMAGENET_MEAN, std=IMAGENET_STD),
 ])
@@ -24,7 +26,7 @@ def load_model(device: torch.device):
         raise RuntimeError(f"Model file not found at: {MODEL_PATH}")
     
     model = timm.create_model(
-        "maxvit_tiny_tf_224.in1k",
+        "maxvit_tiny_tf_224",
         pretrained=False,
         num_classes=2,
     )
@@ -64,12 +66,13 @@ def predict_image(file_bytes: bytes, model: torch.nn.Module, device: torch.devic
 
     no_dr = float(probs[0].item())
     dr    = float(probs[1].item())
-    pred  = "DR" if dr >= no_dr else "No_DR"
+    pred  = "DR" if dr >= THRESHOLD else "No_DR"
 
     return {
         "pred_class": pred,
         "prob_no_dr": no_dr,
         "prob_dr": dr,
+        "threshold": THRESHOLD,
         "raw": [no_dr, dr],
     }
 

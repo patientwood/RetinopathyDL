@@ -102,7 +102,7 @@ body {
   cursor: not-allowed;
 }
 
-.submit-btm:hover:not(:disabled) {
+.submit-btn:hover:not(:disabled) {
   transform: translateY(-2px);
   box-shadow: 0 6px 12px rgba(198, 146, 20, 0.4);
   background: linear-gradient(135deg, #E5A91A 0%, #C69214 100%);

@@ -77,7 +77,7 @@ else:
     @app.get("/")
     async def root():
         return {
-            "message": "Backend runnign. Frontend not built yet.",
+            "message": "Backend running. Frontend not built yet.",
             "docs": "/docs",
             "health": "/api/health"
         }
