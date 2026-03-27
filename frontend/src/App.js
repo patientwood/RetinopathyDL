@@ -2,7 +2,7 @@
 import React, { useState, useRef } from "react";
 import "./App.css";
 
-const API_URL = process.env.REACT_APP_API_URL || "http://localhost:8000";
+const API_URL = "";
 
 function App() {
   const [file, setFile] = useState(null);
