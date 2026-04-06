@@ -11,7 +11,7 @@ from fastapi import HTTPException
 MODEL_PATH = Path("MODELS") / "maxvit_tiny_tf_224_binary_best.pt"
 IMAGENET_MEAN = (0.485, 0.456, 0.406)
 IMAGENET_STD = (0.229, 0.224, 0.225)
-THRESHOLD = 0.665
+THRESHOLD = 0.5
 
 _preprocess = T.Compose([
     T.Resize(256),
